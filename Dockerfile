@@ -8,7 +8,9 @@ RUN apt-get update && \
     zip \
     openjdk-21-jdk \
     ant \
-    android-sdk-platform-tools-common
+    android-sdk-platform-tools-common \
+    git \
+    libsdl2-dev
 
 # Install Android SDK
 ENV ANDROID_HOME=/root
@@ -36,5 +38,10 @@ RUN curl -L https://dl.google.com/android/repository/android-ndk-r27d-linux.zip 
 RUN unzip androidndk.zip -d /root
 RUN rm androidndk.zip
 RUN mv /root/android-ndk* $ANDROID_NDK_ROOT
+
+# SDL repo for the android-project build scripts
+RUN curl -L https://github.com/libsdl-org/SDL/releases/download/release-2.32.10/SDL2-2.32.10.tar.gz -o SDL2-2.32.10.tar.gz
+RUN tar -xf SDL2-2.32.10.tar.gz -C /root
+RUN rm SDL2-2.32.10.tar.gz
 
 WORKDIR /root/build
