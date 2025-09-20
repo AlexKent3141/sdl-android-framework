@@ -3,10 +3,11 @@ FROM ubuntu:24.04
 RUN apt-get update && \
     apt-get install -y \
     build-essential \
+    vim \
     curl \
     cmake \
     zip \
-    openjdk-21-jdk \
+    openjdk-17-jdk \
     ant \
     android-sdk-platform-tools-common \
     git \
