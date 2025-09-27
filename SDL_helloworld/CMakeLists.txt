@@ -15,11 +15,21 @@ if(DOWNLOAD_DEPENDENCIES)
         EXCLUDE_FROM_ALL
     )
     FetchContent_MakeAvailable(SDL3)
+
+    include(FetchContent)
+    FetchContent_Declare(
+        SDL3_image
+        GIT_REPOSITORY "https://github.com/libsdl-org/SDL_image.git"
+        GIT_TAG "main"
+        EXCLUDE_FROM_ALL
+    )
+    FetchContent_MakeAvailable(SDL3_image)
 else()
     # find_package looks for already-installed system packages.
     # Configure with `-DCMAKE_PREFIX_PATH="/path/to/package1;/path/to/package2"`
     # to add search paths.
     find_package(SDL3 CONFIG REQUIRED)
+    find_package(SDL3_image CONFIG REQUIRED)
 endif()
 
 if(ANDROID)
@@ -33,7 +43,7 @@ add_executable(sdl-helloworld
     main.c
 )
 
-target_link_libraries(sdl-helloworld PRIVATE SDL3::SDL3)
+target_link_libraries(sdl-helloworld PRIVATE SDL3::SDL3 SDL3_image::SDL3_image)
 
 # This is safe to set on all platforms. Otherwise your SDL app will
 #  have a terminal window pop up with it on Windows.
