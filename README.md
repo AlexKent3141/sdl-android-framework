@@ -1,6 +1,8 @@
 # Framework for developing Android apps using the SDL
 Developing Android apps using C (or C++) is a bit of a nightmare given the dependency landscape. This repo contains a working SDL-based example + a Dockerfile to get started.
 
+The emphasis in this repo is to do everything from the command line. I like to avoid using heavy IDEs like Android Studio.
+
 ## Workflow
 1. Build the docker container (e.g. `docker build . -t android-dev` in the root directory)
 2. Start the docker container and mount the `SDL_helloworld` folder (e.g. `docker run -v ./SDL_helloworld:/root/SDL_helloworld -it android-dev:latest /bin/bash`)
