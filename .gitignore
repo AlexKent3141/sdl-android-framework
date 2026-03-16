@@ -1,2 +1,8 @@
 **/build
 **/libs
+*backup
+
+*.swp
+*.apk
+*.idsig
+*.o
