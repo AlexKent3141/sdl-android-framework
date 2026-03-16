@@ -9,7 +9,11 @@ RUN apt-get update && \
     cmake \
     zip \
     git \
-    openjdk-17-jdk
+    openjdk-17-jdk \
+    libgles2-mesa-dev \
+    libegl1-mesa-dev \
+    apksigner \
+    android-tools-adb
 
 # Install Android SDK
 # Required
@@ -33,14 +37,14 @@ RUN yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "build-tools;29.0.2" "platform
 # Install Android NDK
 # Not currently required: check later
 # download URL: https://developer.android.com/ndk/downloads
-# ENV ANDROID_NDK_PATH=/root/ndk-bundle
-# ENV ANDROID_NDK_ROOT=/root/ndk-bundle
-# ENV NDK_HOME=/root/ndk-bundle
+ENV ANDROID_NDK_PATH=/root/ndk-bundle
+ENV ANDROID_NDK_ROOT=/root/ndk-bundle
+ENV NDK_HOME=/root/ndk-bundle
 
-# RUN curl -L https://dl.google.com/android/repository/android-ndk-r27d-linux.zip -o androidndk.zip
-# RUN unzip androidndk.zip -d /root
-# RUN rm androidndk.zip
-# RUN mv /root/android-ndk* $ANDROID_NDK_ROOT
+RUN curl -L https://dl.google.com/android/repository/android-ndk-r27d-linux.zip -o androidndk.zip
+RUN unzip androidndk.zip -d /root
+RUN rm androidndk.zip
+RUN mv /root/android-ndk* $ANDROID_NDK_ROOT
 
 # TODO: download and install gradle from "https://services.gradle.org/distributions/gradle-8.6-bin.zip"
 
