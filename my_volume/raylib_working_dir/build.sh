@@ -20,6 +20,17 @@ FLAGS="-ffunction-sections -funwind-tables -fstack-protector-strong -fPIC -Wall 
 
 INCLUDES="-I. -Iinclude -I../include -I$NATIVE_APP_GLUE -I$TOOLCHAIN/sysroot/usr/include"
 
+# Ensure all required build paths exist
+mkdir -p android/build/res/drawable-ldpi
+mkdir -p android/build/res/drawable-mdpi
+mkdir -p android/build/res/drawable-hdpi
+mkdir -p android/build/res/drawable-xhdpi
+
+mkdir -p android/build/assets
+mkdir -p android/build/obj
+mkdir -p android/build/dex
+mkdir -p android/build/res/values
+
 # Copy icons
 cp assets/icon_ldpi.png android/build/res/drawable-ldpi/icon.png
 cp assets/icon_mdpi.png android/build/res/drawable-mdpi/icon.png
